@@ -64,7 +64,7 @@ Version of Nvidia graphics driver
 #### Default value
 
 ```YAML
-nvidia_version: '530'
+nvidia_version: '525'
 ```
 
 ## Discovered Tags
