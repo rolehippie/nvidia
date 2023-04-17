@@ -5,7 +5,7 @@ nvidia_version: "525"
 
 # @var nvidia_packages:description: List of packages to install
 nvidia_packages:
-  - "nvidia-graphics-drivers-{{ nvidia_version }}"
+  - "nvidia-driver-{{ nvidia_version }}"
   - "libvulkan1"
   - "libvulkan1:i386"
 
