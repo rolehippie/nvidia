@@ -17,6 +17,7 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
+  - [nvidia_enable_i386](#nvidia_enable_i386)
   - [nvidia_packages](#nvidia_packages)
   - [nvidia_version](#nvidia_version)
 - [Discovered Tags](#discovered-tags)
@@ -32,6 +33,16 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 
 ## Default Variables
+
+### nvidia_enable_i386
+
+Enable installation of i386 packages
+
+#### Default value
+
+```YAML
+nvidia_enable_i386: true
+```
 
 ### nvidia_packages
 
