@@ -1,7 +1,7 @@
 # Standards: 1.2
 ---
 # @var nvidia_version:description: Version of Nvidia graphics driver
-nvidia_version: "530"
+nvidia_version: "525"
 
 # @var nvidia_packages:description: List of packages to install
 nvidia_packages:
