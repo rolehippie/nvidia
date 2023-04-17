@@ -1,0 +1,42 @@
+# Standards: 1.2
+---
+- name: Check i386 packages
+  when: nvidia_enable_i386
+  register: nvidia_i386_check
+  changed_when: nvidia_i386_check.rc == 1
+  failed_when: nvidia_i386_check.rc > 1
+  shell: dpkg --print-foreign-architectures | grep i386
+  tags:
+    - nvidia
+
+- name: Enable i386 packages
+  when: nvidia_enable_i386 and nvidia_i386_check.rc == 1
+  command: dpkg --add-architecture i386
+  tags:
+    - nvidia
+
+- name: Download repo key
+  shell:
+    cmd: curl -sSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2388FF3BE10A76F638F80723FCAE110B1118213C" | gpg --dearmor --output /usr/share/keyrings/graphics-drivers-archive-keyring.gpg
+    creates: /usr/share/keyrings/graphics-drivers-archive-keyring.gpg
+  tags:
+    - nvidia
+
+- name: Add apt repository
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/graphics-drivers-archive-keyring.gpg] https://ppa.launchpadcontent.net/graphics-drivers/ppa/ubuntu {{ ansible_distribution_release }} main"
+    filename: graphics-drivers
+    update_cache: True
+    state: present
+  tags:
+    - nvidia
+
+- name: Install required packages
+  loop: "{{ nvidia_packages }}"
+  package:
+    name: "{{ item }}"
+    state: present
+  tags:
+    - nvidia
+
+...

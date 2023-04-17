@@ -1,0 +1,12 @@
+# Standards: 1.2
+---
+# @var nvidia_version:description: Version of Nvidia graphics driver
+nvidia_version: "530"
+
+# @var nvidia_packages:description: List of packages to install
+nvidia_packages:
+  - "nvidia-driver-{{ nvidia_version }}"
+  - "libvulkan1"
+  - "libvulkan1:i386"
+
+...
