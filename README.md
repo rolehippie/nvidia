@@ -52,7 +52,7 @@ List of packages to install
 
 ```YAML
 nvidia_packages:
-  - nvidia-graphics-driver-{{ nvidia_version }}
+  - nvidia-graphics-drivers-{{ nvidia_version }}
   - libvulkan1
   - libvulkan1:i386
 ```
